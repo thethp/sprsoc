@@ -11,8 +11,7 @@ require.config({
     }
 });
 
-require([
-    'backbone'
-], function (Backbone) {
-    Backbone.history.start();
+require(['backbone','views/app'], function (Backbone, AppView) {
+  Backbone.history.start();
+  new AppView();
 });

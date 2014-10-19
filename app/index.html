@@ -15,9 +15,13 @@
     <!-- endbuild -->
   </head>
   <body>
+    <div class="totalTweets"></div>
+    <div class="followUpTweets"></div>
     <div id='tweetHolder'></div>
     <script type="text/template" id="tweet">
       OH HI THERE <%= screen_name %>or shall I say <%= name %>
+      <div class="remove">X</div>
+      <input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  >
     </script>
 
 

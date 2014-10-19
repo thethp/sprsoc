@@ -8,7 +8,12 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       text: '',
       name: '',
       screen_name: '',
-      profile_image_url: ''
+      profile_image_url: '',
+      follow_up: false
+    },
+
+    toggleFollowUp: function() {
+      this.set('follow_up', !this.get('follow_up'));
     }
   });
 

@@ -28,19 +28,29 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       var secsAway = Math.floor(new Date().getTime()/1000 - createdDate.getTime()/1000);
 
       var interval = Math.floor(secsAway/31536000);
-      if (interval > 1) return interval+' years ago';
+      if (interval > 1) {
+        return interval+' years ago';
+      }
 
       interval = Math.floor(secsAway/2592000);
-      if (interval > 1) return interval+'mnthss ago';
+      if (interval > 1) {
+        return interval+'mnthss ago';
+      }
 
       interval = Math.floor(secsAway/86400);
-      if (interval >= 1) return interval+' days ago';
+      if (interval >= 1) {
+        return interval+' days ago';
+      }
 
       interval = Math.floor(secsAway/3600);
-      if (interval >= 1) return interval+' hrs ago';
+      if (interval >= 1) {
+        return interval+' hrs ago';
+      }
 
       interval = Math.floor(secsAway/60);
-      if (interval > 1) return interval+' mins ago';
+      if (interval > 1) {
+        return interval+' mins ago';
+      }
 
       return Math.floor(secsAway)+' secs ago';
     },

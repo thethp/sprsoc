@@ -17,8 +17,8 @@ define(['underscore', 'backbone', 'models/tweet'], function(_, Backbone, Tweet) 
      },
 
      sortAscendingName: function(tweetA, tweetB) {
-       if(tweetA.get('sort_name') < tweetB.get('sort_name')) return -1;
-       if(tweetB.get('sort_name') < tweetA.get('sort_name')) return 1;
+       if(tweetA.get('sort_name') < tweetB.get('sort_name')) { return -1; }
+       if(tweetB.get('sort_name') < tweetA.get('sort_name')) { return 1;  }
        return 0;
      }
 

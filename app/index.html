@@ -50,7 +50,10 @@
            <%= display_date %>
          </div>
          <div class="actions">
-           <label><input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  > Follow Up</label>
+           <label>
+             <input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  > 
+             <span class="followSpan">Follow Up</span>
+           </label>
            <div class="remove">Remove</div>
          </div>
          <div class="confirmRemove">

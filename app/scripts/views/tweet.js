@@ -34,6 +34,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 
     toggleFollow: function(e) {
       this.model.toggleFollowUp();
+      this.$('.followSpan').toggleClass('checked');
     }
 
   });  

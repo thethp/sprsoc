@@ -64,15 +64,30 @@
   label {
     display: block;
   }
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+  .followSpan:before {
+    position: absolute;
+    content: "";
+    right: 105%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #666;
+  }
+  .followSpan.checked:before {
+    background: #7AC143 url(../images/check.png);
+    border: 0px;
+  }
   &:hover .remove {
     display: block;
   }
   .remove {
     display: none;
-    margin-top: 8px;
+    margin-top: 15px;
     border-radius: 3px;
     padding: 3px;
-    background-color: #A1C2E2;
+    background-color: #999;
     text-align: center;
     color: #FFF;
     width: 80%;

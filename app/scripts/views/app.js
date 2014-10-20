@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'timeago', 'collections/tweets', 'views/tweet', 'views/summary'], function($, _, Backbone, timeago, Tweets, TweetView, SummaryView) {
+define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet', 'views/summary'], function($, _, Backbone, Tweets, TweetView, SummaryView) {
   'use strict';
 
   var app = Backbone.View.extend({
@@ -17,7 +17,7 @@ define(['jquery', 'underscore', 'backbone', 'timeago', 'collections/tweets', 'vi
     },
 
     events: {
-      'click .username.sortable': 'toggleSort'
+      'click .sortable': 'toggleSort'
     },
 
     addTweet: function(tweet) {
@@ -31,19 +31,47 @@ define(['jquery', 'underscore', 'backbone', 'timeago', 'collections/tweets', 'vi
     },
 
     toggleSort: function(e) {
-      if($(e.currentTarget).hasClass('username')) {
+      var currTarg = $(e.currentTarget);
+      if(currTarg.hasClass('sorted')) {
+        if(currTarg.hasClass('asc')) {
+          this.sortAscending = false;
+          currTarg.removeClass('asc').addClass('desc');
+        } else {
+          this.sortAscending = true;
+          currTarg.removeClass('desc').addClass('asc');
+        }
+      } else {
+        $('.sortable').removeClass('sorted');
+        currTarg.addClass('sorted desc');
+        this.sortAscending = true;
+      }
+
+      if(currTarg.hasClass('username')) {
         if(this.sortOn === 'date') {
+            this.sortOn = 'name';
+            this.sortAscending = false;
+        }
+        if(this.sortAscending === true) {
+          this.sortAscending = false;
           Tweets.comparator = 'sort_name';
         } else {
-            Tweets.models = Tweets.models.reverse();
+          this.sortAscending = true;
+          Tweets.comparator = Tweets.sortAscendingName;
         }
       }
 
       if($(e.currentTarget).hasClass('date')) {
-          if(this.sortOn === 'date') {
-              Tweets.comparator = function(tweet) { return tweet.get('created_at').getTime();  };
+          if(this.sortOn === 'name') {
+              this.sortOn = 'date';
+              this.sortAscending = false;
+          }        
+          if(this.sortAscending === true) {
+            this.sortOn = 'date';
+            this.sortAscending = false;
+            Tweets.comparator = Tweets.sortDescendingDate;
           } else {
-              Tweets.comparator = function(tweet) { return -tweet.get('sort_name'); };
+            this.sortAscending = true;
+            Tweets.comparator = Tweets.sortAscendingDate;
           }
       }
 

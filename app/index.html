@@ -46,7 +46,7 @@
          <div class="content">
            <%= text %>
          </div>
-         <div class="date">
+         <div class="date <%= (display_date.indexOf('hrs') < 0 && display_date.indexOf('secs') < 0) ? 'showEnglishDate' : ''%>"  data-english-date="<%= attr_date %>">
            <%= display_date %>
          </div>
          <div class="actions">

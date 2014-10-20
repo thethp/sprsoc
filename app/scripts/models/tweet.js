@@ -21,7 +21,6 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
     toggleFollowUp: function() {
       this.set('follow_up', !this.get('follow_up'));
-      this.collection.sync('create', this);
     }
   });
 

@@ -1,8 +1,10 @@
 .tweetSummary {
   max-width: 275px;
+  height: auto !important;
   background: #FFF;
-  padding: 10px;
+  padding: 10px 10px;
   border-radius: 10px;
+  font-size: 16px;
   color: #4d4d4d;
   height: 100px;
 }
@@ -12,8 +14,21 @@
   text-decoration: underline;
 }
 .detail {
-  margin-bottom: 5px;
-}
-.detail .figure {
-  float: right;
+  margin-bottom: 8px;
+  .number {
+    font-weight: bold;
+    font-size: 23px;
+    text-align: center; 
+    &.totalTweets {
+      color: #2CAEE1;
+    }
+    &.followUpTweets {
+      color: #7ac143;
+    }
+  }
+  .factlabel {
+    color: #999;
+    font-size: 14px;
+    top: -3px;
+  }
 }

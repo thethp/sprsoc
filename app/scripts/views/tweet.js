@@ -10,7 +10,8 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     },
 
     events: {
-        'click .remove': 'removeTweet',
+        'click .remove': 'confirmRemove',
+        'click .removeIt': 'removeTweet',
         'change input[name=follow]': 'toggleFollow'
     },
 
@@ -18,11 +19,15 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
       var template = _.template($('#tweet').html(), this.model.toJSON());
       return this.$el.html(template);
     },
+ 
+    confirmRemove: function(e) {
+      this.$el.addClass('showConfirm');
+    },
 
     removeTweet: function(e) {
       var me = this;      
       this.$el.slideUp(function() {
-        me.model.collection.remove(this.model);
+        me.model.collection.remove(me.model);
         me.remove();
       });
     },

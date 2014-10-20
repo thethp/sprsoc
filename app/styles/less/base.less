@@ -9,6 +9,7 @@ html, body {
   background: #eee;
   color: #4d4d4d;
   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
 }
 .topBar {
   z-index: 1000;
@@ -33,6 +34,7 @@ html, body {
   background-color: #767a79;
 }
 .mainContent {
+  min-width: 1016px;
   position: absolute;
   left: 230px;
   right: 0px;
@@ -45,16 +47,19 @@ html, body {
 a {
   text-decoration: none;
   color: #1d67a7;
+  font-size: 15px;
   font-weight: 500;
 }
 .col {
   display: inline-block;
   vertical-align: top;
   &.left {
+    min-width: 745px;
     width: 75%;
     padding-right: 20px;
   }
   &.right {
+    min-width: 220px;
     width: 20%;
   }
 }

@@ -1,18 +1,17 @@
-define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet'], function($, _, Backbone, Tweets, TweetView) {
+define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet', 'views/summary'], function($, _, Backbone, Tweets, TweetView, SummaryView) {
   'use strict';
 
   var app = Backbone.View.extend({
     el: 'body',
     initialize: function() {
       this.$tweetHolder = this.$('#tweetHolder');
-      this.$totalTweets = this.$('.totalTweets');
-      this.$followUpTweets = this.$('.followUpTweets');       
+      this.$summaryHolder = this.$('.right.col'); 
 
       this.listenTo(Tweets, 'reset', this.handleAllTweets);      
-      this.listenTo(Tweets, 'remove', this.handleAllTweets);
-      this.listenTo(Tweets, 'sync', this.updateTweetCount);
-
       Tweets.fetch({reset: true});
+
+      var summaryView = new SummaryView({collection:Tweets});
+      this.$summaryHolder.append(summaryView.render());
     },
 
     events: {
@@ -26,13 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet']
     
     handleAllTweets: function() {
       this.$tweetHolder.empty();
-      this.updateTweetCount();
       Tweets.each(this.addTweet, this);
-    },
-
-    updateTweetCount: function() {
-      this.$totalTweets.html(Tweets.length);
-      this.$followUpTweets.html(Tweets.where({follow_up: true}).length);
     },
 
   });

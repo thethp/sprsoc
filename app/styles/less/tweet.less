@@ -2,6 +2,10 @@
   background: #FFF;
   padding: 10px;
   margin-bottom: 2px;
+  &.index {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
   div, a {
     vertical-align: top;
     display: inline-block;
@@ -10,8 +14,9 @@
     width: 55px;
     height: 55px;
     margin-right: 5px;
-    &span {
+    &.blank {
       height: auto;
+      display: inline-block
     }
   }
   .username {
@@ -27,7 +32,7 @@
   }
   .date {
     position: absolute;
-    right: 120px;
+    right: 130px;
     width: 64px;
   }
   .actions {
@@ -39,6 +44,58 @@
     display: block;
   }
   .remove {
-    margin-top: 5px;
+    margin-top: 8px;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: #A1C2E2;
+    text-align: center;
+    color: #FFF;
+    width: 80%;
+    float: right;
+    cursor: pointer; 
+  }
+  .sortable {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+  &.showConfirm .confirmRemove {
+    display: block;
+  }
+  .confirmRemove {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(216,0,12,.8);
+    padding: 25px 25px 25px 75px;
+    color: #FFF;
+    text-shadow: 1px 1px #000;
+    font-size: 22px;
+    font-weight: bold;
+    .removeIt {
+      margin-left: 20px;
+      border-radius: 10px;
+      padding: 5px 40px;
+      font-weight: normal;
+      font-size: 18px;
+      text-shadow: none;
+      background-color: #7AC143;
+      color: #FFF;
+      cursor: pointer; 
+   }
+    .cancel {
+      margin-left: 20px;
+      font-weight: normal;
+      font-size: 14px;
+      text-shadow: none;
+      line-height: 27px;
+      text-decoration: underline;
+      cursor:pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

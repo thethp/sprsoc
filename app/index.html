@@ -24,10 +24,10 @@
         <div class="left col">
           <div class="tweetDisplay">
             <div class="tweet index">
-              <span class="userpic"></span>
-              <div class="username">Name</div>
+              <span class="userpic blank"></span>
+              <div class="username sortable">Name</div>
               <div class="content">Message</div>
-              <div class="date">Date</div>
+              <div class="date sortable">Date</div>
               <div class="actions"></div>
             </div>
             <div id="tweetHolder"></div>
@@ -35,17 +35,6 @@
        </div>
 
        <div class="right col">
-         <div class="tweetSummary">
-           <div class="summaryHeader">Summary</div>
-           <div class="detail">
-             Total Tweets
-             <span class="figure totalTweets"></span>
-           </div>
-           <div class="detail">
-             Marked for Follow Up
-             <span class="figure followUpTweets"></span>
-           </div>
-         </div>
        </div>
 
        <script type="text/html" id="tweet">
@@ -63,7 +52,25 @@
            <label><input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  > Follow Up</label>
            <div class="remove">Remove</div>
          </div>
+         <div class="confirmRemove">
+           Are you sure?
+           <div class="removeIt">Yes, Remove It.</div>
+           <div class="cancel">Cancel</div>
+         </div>
        </script>
+
+       <script type="text/html" id="tweetSummary">
+         <div class="summaryHeader">Summary</div>
+           <div class="detail">
+             <span class="totalTweets number"></span>
+             <span class="factlabel">Total Tweets</span>
+           </div>
+           <div class="detail">
+             <span class="followUpTweets number"></span>
+             <span class="factlabel">Follow Up</span>
+           </div>
+       </script>
+
      </div>
 
     <!--[if lt IE 10]>

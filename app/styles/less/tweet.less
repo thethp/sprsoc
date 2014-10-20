@@ -1,0 +1,44 @@
+.tweet {
+  background: #FFF;
+  padding: 10px;
+  margin-bottom: 2px;
+  div, a {
+    vertical-align: top;
+    display: inline-block;
+  }
+  .userpic {
+    width: 55px;
+    height: 55px;
+    margin-right: 5px;
+    &span {
+      height: auto;
+    }
+  }
+  .username {
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .content {
+    padding: 0;
+    position: absolute;
+    left: 225px;
+    right: 205px;
+  }
+  .date {
+    position: absolute;
+    right: 120px;
+    width: 64px;
+  }
+  .actions {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+  }
+  label, .remove {
+    display: block;
+  }
+  .remove {
+    margin-top: 5px;
+  }
+}

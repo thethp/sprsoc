@@ -27,6 +27,19 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        less: {
+            development: {
+                options: {
+                    compress: true,
+                    yuicompress: true,
+                    optimization: 2
+                },
+                files: {
+                    // target.css file: source.less file
+                    "<%= yeoman.app %>/styles/main.css": "<%= yeoman.app %>/styles/less/main.less"
+                }
+            }
+        },
         watch: {
             options: {
                 nospawn: true,
@@ -44,6 +57,13 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
                     'test/spec/**/*.js'
                 ]
+            },
+            styles: {
+               files: ['less/**/*.less'], // which files to watch
+                   tasks: ['less'],
+                   options: {
+                   nospawn: true
+               }
             },
             jst: {
                 files: [
@@ -324,6 +344,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
+        'less',
         'jshint',
         'test',
         'build'

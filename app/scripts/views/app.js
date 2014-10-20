@@ -6,12 +6,17 @@ define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet']
     initialize: function() {
       this.$tweetHolder = this.$('#tweetHolder');
       this.$totalTweets = this.$('.totalTweets');
-      this.$followUpTweets = this.$('.followUpTweets'); 
+      this.$followUpTweets = this.$('.followUpTweets');       
 
       this.listenTo(Tweets, 'reset', this.handleAllTweets);      
       this.listenTo(Tweets, 'remove', this.handleAllTweets);
+      this.listenTo(Tweets, 'sync', this.updateTweetCount);
 
       Tweets.fetch({reset: true});
+    },
+
+    events: {
+      'click .sortDate': 'handleAllTweets'
     },
 
     addTweet: function(tweet) {
@@ -28,7 +33,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/tweets', 'views/tweet']
     updateTweetCount: function() {
       this.$totalTweets.html(Tweets.length);
       this.$followUpTweets.html(Tweets.where({follow_up: true}).length);
-    }
+    },
 
   });
 

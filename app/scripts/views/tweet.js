@@ -2,6 +2,9 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
   'use strict';
 
   var tweet = Backbone.View.extend({
+    attributes: {
+      class: 'tweet'
+    },
     initialize: function(){
       this.render();
     },
@@ -17,12 +20,15 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     },
 
     removeTweet: function(e) {
-      this.model.collection.remove(this.model);
-      this.remove();
+      var me = this;      
+      this.$el.slideUp(function() {
+        me.model.collection.remove(this.model);
+        me.remove();
+      });
     },
 
     toggleFollow: function(e) {
-      this.model.toggleFollowUp(); 
+      this.model.toggleFollowUp();
     }
 
   });  

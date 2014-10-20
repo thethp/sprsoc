@@ -10,20 +10,61 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
   </head>
   <body>
-    <div class="totalTweets"></div>
-    <div class="followUpTweets"></div>
-    <div id='tweetHolder'></div>
-    <script type="text/template" id="tweet">
-      OH HI THERE <%= screen_name %>or shall I say <%= name %>
-      <div class="remove">X</div>
-      <input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  >
-    </script>
+    <div class="topBar">
+      <div class="menu"></div>
+    </div>
+    <div class="content">
+      <div class="sidebar"></div>
+      <div class="mainContent">
+        <div class="header">
+          Incoming Tweets
+        </div>
+        <div class="left col">
+          <div class="tweetDisplay">
+            <div class="tweet index">
+              <span class="userpic"></span>
+              <div class="username">Name</div>
+              <div class="content">Message</div>
+              <div class="date">Date</div>
+              <div class="actions"></div>
+            </div>
+            <div id="tweetHolder"></div>
+          </div>
+       </div>
 
+       <div class="right col">
+         <div class="tweetSummary">
+           <div class="summaryHeader">Summary</div>
+           <div class="detail">
+             Total Tweets
+             <span class="figure totalTweets"></span>
+           </div>
+           <div class="detail">
+             Marked for Follow Up
+             <span class="figure followUpTweets"></span>
+           </div>
+         </div>
+       </div>
+
+       <script type="text/html" id="tweet">
+         <img src="<%= profile_image_url %>" class="userpic">
+         <div class="username">
+           <a href="http://twitter.com/<%= screen_name %>" data-name="<%= name %>">@<%= screen_name %></a>
+         </div>
+         <div class="content">
+           <%= text %>
+         </div>
+         <div class="date">
+           <%= display_date %>
+         </div>
+         <div class="actions">
+           <label><input type="checkbox" name="follow" <%= follow_up === true ? 'checked' : ''  %>  > Follow Up</label>
+           <div class="remove">Remove</div>
+         </div>
+       </script>
+     </div>
 
     <!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

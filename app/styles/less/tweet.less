@@ -20,14 +20,14 @@
     }
   }
   .username {
-    width: 150px;
+    width: 160px;
     text-overflow: ellipsis;
     overflow: hidden;
   }
   .content {
     padding: 0;
     position: absolute;
-    left: 225px;
+    left: 235px;
     right: 205px;
   }
   .date {
@@ -40,10 +40,14 @@
     right: 10px;
     text-align: right;
   }
-  label, .remove {
+  label {
+    display: block;
+  }
+  &:hover .remove {
     display: block;
   }
   .remove {
+    display: none;
     margin-top: 8px;
     border-radius: 3px;
     padding: 3px;
@@ -57,6 +61,12 @@
   .sortable {
     text-decoration: underline;
     text-decoration-style: dotted;
+    cursor: pointer;
+  }
+  .sorted:after {
+    &.desc {
+      
+    }
   }
   &.showConfirm .confirmRemove {
     display: block;

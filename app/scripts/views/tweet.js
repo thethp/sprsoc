@@ -17,7 +17,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 
     render: function() {
       var template = _.template($('#tweet').html(), this.model.toJSON());
-      return this.$el.html(template);
+      return this.$el.html(template).timeago();
     },
  
     toggleTweetRemove: function(e) {

@@ -10,7 +10,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     },
 
     events: {
-        'click .remove': 'confirmRemove',
+        'click .remove, .cancel': 'toggleTweetRemove',
         'click .removeIt': 'removeTweet',
         'change input[name=follow]': 'toggleFollow'
     },
@@ -20,8 +20,8 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
       return this.$el.html(template);
     },
  
-    confirmRemove: function(e) {
-      this.$el.addClass('showConfirm');
+    toggleTweetRemove: function(e) {
+      this.$el.toggleClass('showConfirm');
     },
 
     removeTweet: function(e) {

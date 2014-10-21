@@ -10,6 +10,7 @@ html, body {
   color: #4d4d4d;
   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
+  overflow: hidden;
 }
 .topBar {
   z-index: 1000;
@@ -24,6 +25,11 @@ html, body {
   height: 59px;
 }
 .content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding-top: 81px;
 }
 .sidebar {
@@ -38,7 +44,9 @@ html, body {
   min-width: 1245px;
   width: 100%;
   position: absolute;
-  padding: 20px 20px 20px 250px;
+  padding: 20px 20px 200px 250px;
+  overflow: scroll;
+  height: 100%;
 }
 .header {
   font-size: 25px;
